@@ -15,13 +15,16 @@
 
 """
 Convert Pascal-VOC xml annotations created by labelImg into TF Records
-
 Example usage:
     python /home/ubuntu/tensorflow_workspace/2020Game/data/create_tf_record.py \
         --label_map_path=/home/ubuntu/tensorflow_workspace/2020Game/data/2020Game_label_map.pbtxt \
         --data_dir=/home/ubuntu/tensorflow_workspace/2020Game/data/videos \
         --alt-data_dir=/home/ubuntu/tensorflow_workspace/2019Game/data/videos \
         --output_dir=/home/ubuntu/tensorflow_workspace/2020Game/data
+    python3 /home/ubuntu/tensorflow_workspace/2023Game/data/create_tf_record.py \
+        --label_map_path=/home/ubuntu/tensorflow_workspace/2023Game/data/2023Game_label_map.pbtxt \
+        --data_dir=/home/ubuntu/tensorflow_workspace/2023Game/data/combined_88_test \
+        --output_dir=/home/ubuntu/tensorflow_workspace/2023Game/data
 """
 
 import hashlib
@@ -46,10 +49,10 @@ from object_detection.utils import dataset_util
 from object_detection.utils import label_map_util
 
 flags = tf.app.flags
-flags.DEFINE_string('data_dir', '/home/ubuntu/tensorflow_workspace/2020Game/data/videos', 'Root directory to raw dataset.')
-flags.DEFINE_string('alt_data_dir', '/home/ubuntu/tensorflow_workspace/2019Game/data/videos', 'Optional second root directory to raw dataset.')
-flags.DEFINE_string('alt_data_dir_2', '/home/ubuntu/tensorflow_workspace/2022Game/data/videos', 'Optional third root directory to raw dataset.')
-flags.DEFINE_strig('alt_data_dir_3', '/home/ubuntu/tensorflow_workspace/2023/data/videos', 'Optional fourth root directory to raw dataset.')
+flags.DEFINE_string('data_dir', '/home/ubuntu/tensorflow_workspace/2023Game/data/combined_88_test', 'Root directory to raw dataset.')
+flags.DEFINE_string('alt_data_dir', '', 'Optional second root directory to raw dataset.')
+flags.DEFINE_string('alt_data_dir_2', '', 'Optional third root directory to raw dataset.')
+flags.DEFINE_string('alt_data_dir_3', '', 'Optional fourth root directory to raw dataset.')
 flags.DEFINE_string('output_dir', '/home/ubuntu/tensorflow_workspace/2023Game/data', 'Path to directory to output TFRecords.')
 flags.DEFINE_string('label_map_path', '/home/ubuntu/tensorflow_workspace/2023Game/data/2023Game_label_map.pbtxt',
                     'Path to label map proto')
@@ -64,10 +67,8 @@ def dict_to_tf_example(data,
                        ignore_difficult_instances=False,
                        ):
   """Convert XML derived dict to tf.Example proto.
-
   Notice that this function normalizes the bounding box coordinates provided
   by the raw data.
-
   Args:
     data: dict holding PASCAL XML fields for a single image (obtained by
       running dataset_util.recursive_parse_xml_to_dict)
@@ -76,16 +77,15 @@ def dict_to_tf_example(data,
       Pascal dataset directory holding the actual image data.
     ignore_difficult_instances: Whether to skip difficult instances in the
       dataset  (default: False).
-
   Returns:
     example: The converted tf.Example.
-
   Raises:
     ValueError: if the image pointed to by data['filename'] is not a valid PNG
   """
   img_path = data['path']
   print(img_path)
   with tf.gfile.GFile(img_path, 'rb') as fid:
+    print(img_path)
     encoded_image = fid.read()
   encoded_image_io = io.BytesIO(encoded_image)
   image = PIL.Image.open(encoded_image_io)
@@ -123,6 +123,8 @@ def dict_to_tf_example(data,
       ymins.append(ymin / height)
       xmaxs.append(xmax / width)
       ymaxs.append(ymax / height)
+      if "apriltag16h11" in obj['name']:
+        obj['name'] = obj['name'].replace("apriltag16h11", "april_tag")
       class_name = obj['name']
       if (class_name in class_count_map):
           class_count_map[class_name] += 1
@@ -171,7 +173,6 @@ def create_tf_record(output_filename,
                      examples,
                      class_map_count):
   """Creates a TFRecord file from examples.
-
   Args:
     output_filename: Path to where output file is saved.
     num_shards: Number of shards for output file.
@@ -218,10 +219,10 @@ def main(_):
   print(label_map_dict)
 
   logging.info('Reading from dataset.')
-  examples_list  = tf.gfile.Glob(os.path.join(data_dir, '*.xml'))
+  examples_list = tf.gfile.Glob(os.path.join(data_dir, '*.xml'))
   examples_list += tf.gfile.Glob(os.path.join(alt_data_dir, '*.xml'))
   examples_list += tf.gfile.Glob(os.path.join(alt_data_dir_2, '*.xml'))
-  exapmles_list += tf.gfile.Glob(os.path.join(alt_data_dir_3, '*.xml'))
+  examples_list += tf.gfile.Glob(os.path.join(alt_data_dir_3, '*.xml'))
   # Test images are not included in the downloaded data set, so we shall perform
   # our own split.
   # TODO - should this be based on an even split of object types rather than 
@@ -235,8 +236,8 @@ def main(_):
   logging.info('%d training and %d validation examples.',
                len(train_examples), len(val_examples))
 
-  train_output_path = os.path.join(FLAGS.output_dir, '2022Game_train.record')
-  val_output_path = os.path.join(FLAGS.output_dir, '2022Game_val.record')
+  train_output_path = os.path.join(FLAGS.output_dir, '2023Game_train.record')
+  val_output_path = os.path.join(FLAGS.output_dir, '2023Game_val.record')
   class_map_count = {}
   create_tf_record(
       train_output_path,
