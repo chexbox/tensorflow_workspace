@@ -1,4 +1,4 @@
-<annotation>
+<annotation verified="yes">
 	<folder>videos</folder>
 	<filename>323_60_Angle.png</filename>
 	<path>/home/ubuntu/tensorflow_workspace/2023Game/data/videos/323_60_Angle.png</path>
@@ -29,10 +29,10 @@
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>189</xmin>
-			<ymin>241</ymin>
-			<xmax>225</xmax>
-			<ymax>281</ymax>
+			<xmin>197</xmin>
+			<ymin>250</ymin>
+			<xmax>220</xmax>
+			<ymax>274</ymax>
 		</bndbox>
 	</object>
 	<object>
@@ -41,10 +41,10 @@
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>426</xmin>
-			<ymin>275</ymin>
-			<xmax>471</xmax>
-			<ymax>318</ymax>
+			<xmin>435</xmin>
+			<ymin>281</ymin>
+			<xmax>464</xmax>
+			<ymax>308</ymax>
 		</bndbox>
 	</object>
 	<object>
@@ -53,10 +53,10 @@
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>667</xmin>
-			<ymin>276</ymin>
-			<xmax>714</xmax>
-			<ymax>320</ymax>
+			<xmin>675</xmin>
+			<ymin>285</ymin>
+			<xmax>705</xmax>
+			<ymax>312</ymax>
 		</bndbox>
 	</object>
 	<object>
@@ -65,10 +65,10 @@
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>931</xmin>
-			<ymin>277</ymin>
-			<xmax>982</xmax>
-			<ymax>324</ymax>
+			<xmin>941</xmin>
+			<ymin>285</ymin>
+			<xmax>971</xmax>
+			<ymax>315</ymax>
 		</bndbox>
 	</object>
 	<object>
@@ -336,7 +336,7 @@
 		</bndbox>
 	</object>
 	<object>
-		<name>red_ds_light</name>
+		<name>ds_numbers</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
@@ -348,14 +348,14 @@
 		</bndbox>
 	</object>
 	<object>
-		<name>red_ds_light</name>
+		<name>ds_numbers</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
 			<xmin>630</xmin>
-			<ymin>99</ymin>
-			<xmax>685</xmax>
+			<ymin>94</ymin>
+			<xmax>681</xmax>
 			<ymax>115</ymax>
 		</bndbox>
 	</object>
@@ -501,6 +501,18 @@
 			<ymin>392</ymin>
 			<xmax>125</xmax>
 			<ymax>409</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>ds_numbers</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>502</xmin>
+			<ymin>98</ymin>
+			<xmax>553</xmax>
+			<ymax>119</ymax>
 		</bndbox>
 	</object>
 </annotation>

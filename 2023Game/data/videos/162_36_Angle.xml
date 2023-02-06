@@ -1,4 +1,4 @@
-<annotation>
+<annotation verified="yes">
 	<folder>videos</folder>
 	<filename>162_36_Angle.png</filename>
 	<path>/home/ubuntu/tensorflow_workspace/2023Game/data/videos/162_36_Angle.png</path>
@@ -17,10 +17,10 @@
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>48</xmin>
-			<ymin>293</ymin>
-			<xmax>165</xmax>
-			<ymax>410</ymax>
+			<xmin>74</xmin>
+			<ymin>313</ymin>
+			<xmax>147</xmax>
+			<ymax>377</ymax>
 		</bndbox>
 	</object>
 	<object>
@@ -29,10 +29,10 @@
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>637</xmin>
-			<ymin>261</ymin>
-			<xmax>731</xmax>
-			<ymax>355</ymax>
+			<xmin>659</xmin>
+			<ymin>282</ymin>
+			<xmax>706</xmax>
+			<ymax>336</ymax>
 		</bndbox>
 	</object>
 	<object>
@@ -41,22 +41,22 @@
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>1027</xmin>
-			<ymin>254</ymin>
-			<xmax>1097</xmax>
-			<ymax>324</ymax>
+			<xmin>1039</xmin>
+			<ymin>267</ymin>
+			<xmax>1071</xmax>
+			<ymax>311</ymax>
 		</bndbox>
 	</object>
 	<object>
 		<name>april_tag_5</name>
 		<pose>Unspecified</pose>
-		<truncated>1</truncated>
+		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>1231</xmin>
-			<ymin>198</ymin>
-			<xmax>1280</xmax>
-			<ymax>246</ymax>
+			<xmin>1246</xmin>
+			<ymin>206</ymin>
+			<xmax>1270</xmax>
+			<ymax>238</ymax>
 		</bndbox>
 	</object>
 	<object>
@@ -89,10 +89,10 @@
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>911</xmin>
-			<ymin>444</ymin>
+			<xmin>929</xmin>
+			<ymin>449</ymin>
 			<xmax>1084</xmax>
-			<ymax>580</ymax>
+			<ymax>571</ymax>
 		</bndbox>
 	</object>
 	<object>
@@ -101,10 +101,10 @@
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>446</xmin>
-			<ymin>448</ymin>
-			<xmax>499</xmax>
-			<ymax>501</ymax>
+			<xmin>451</xmin>
+			<ymin>454</ymin>
+			<xmax>496</xmax>
+			<ymax>512</ymax>
 		</bndbox>
 	</object>
 	<object>
@@ -113,10 +113,10 @@
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>635</xmin>
-			<ymin>428</ymin>
-			<xmax>675</xmax>
-			<ymax>476</ymax>
+			<xmin>638</xmin>
+			<ymin>431</ymin>
+			<xmax>678</xmax>
+			<ymax>479</ymax>
 		</bndbox>
 	</object>
 	<object>
@@ -125,10 +125,10 @@
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>791</xmin>
+			<xmin>801</xmin>
 			<ymin>414</ymin>
 			<xmax>832</xmax>
-			<ymax>458</ymax>
+			<ymax>464</ymax>
 		</bndbox>
 	</object>
 	<object>
